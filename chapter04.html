@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>20101192 Homepage</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Unix System Summary</h1>
+            <h3>20101192 Ko Kyeong Tae</h3>
+		</div>
+		<div class="content">
+			<div class="sidebar">
+				<ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chapter01.html">chapter01</a></li>
+                    <li><a href="chapter02.html">chapter02</a></li>
+                    <li><a href="chapter03.html">chapter03</a></li>
+                    <li><a href="chapter04.html">chapter04</a></li>
+                    <li><a href="chapter05.html">chapter05</a></li>
+                    <li><a href="chapter06.html">chapter06</a></li>
+                    <li><a href="chapter07.html">chapter07</a></li>
+                    <li><a href="chapter08.html">chapter08</a></li>
+                    <li><a href="chapter09.html">chapter09</a></li>
+                    <li><a href="chapter10.html">chapter10</a></li>
+                    <li><a href="chapter11.html">chapter11</a></li>
+                    <li><a href="chapter13.html">chapter13</a></li>
+                    <li><a href="chapter14.html">chapter14</a></li>
+                    <li><a href="chapter16.html">chapter16</a></li>
+                    <li><a href="chapter18.html">chapter18</a></li>
+                    <li><a href="chapter19.html">chapter19</a></li>
+                    <li><a href="dos.html">dos</a></li>
+                    </ul>
+			</div>
+			<div class="main">
+				<h2>Chapter 04</h2>
+				<p>File Systems</p>
+				<hr>
+                <img src="https://www.doc.ic.ac.uk/~wjk/unixintro/dirtree.gif" alt="unixfilesystemdiagram">
+                <p>
+                Upper image shows Unix file system. It can be consisted of 3 partitions. The first is root part, Second is /home part, and third is /usr part.
+                </p>
+                <p>
+                    Unix system has special file system constructure. All data is stored by i-node and data block.
+                    <ul>
+                        <li>
+                            I-node contains information about data.<br>
+                            This contains Mode(permissons like read,write,and executable), owner information,<br>
+                            size, timestamps, direct blocks, indirect blocks, and multi-indirect blocks. <br>
+                            Direct block points data block directly. And indirect block points another inode block.
+                        </li>
+                        <li>
+                            Data block is storage of data.<br>
+                            It can contain 512Bytes. So usually, 1 file is divided into many data blocks.
+                        </li>
+                    </ul> 
+                </p>
+                <p>
+                    Let me explain about directories in Unix system.
+                    <ol style="list-style:none">
+                        <li>/ : root directory. It is the root of the entire file system hierarchy.</li>
+                        <li>/devices : It contains physical device files.</li>
+                        <li>/dev : It contains logical device files.</li>
+                        <li>/etc : It contains host-specific system-wide configuration files like /etc/passwd.</li> 
+                        <li>/mnt : It conntains temporary mounted file systems.</li>
+                        <li>/opt : It contains optional application software packages.</li>
+                        <li>/proc : It contains virtual filesystem providing process and kernel information as files.</li>
+                        <li>/tmp : It contains temporary files. It is not preserved between system reboots.</li>
+                        <li>/bin : It contains command binaries. (same with /usr/bin)</li>
+                        <li>/sbin : It contains non-esseential system binaries like daemons for various network-services and some command files used by super user.</li>
+                        <li>/usr : It contains files that used for miscellaneous purpose.</li>
+                        <li>/lib : It contains libraries for the binaries in /usr/bin and /usr/sbin/.(same with /usr/lib)</li>
+                        <li>/var : It contains variable files whose content is expected to continually change during normal operation of the system such as logs, spool files, and temporary e-mail files.</li>
+                        <li>/home : It contains user's home directories. Nowadays, user's home is in /export/home.</li>
+                        <li>/export : open contains remote file systems.</li>
+                    </ol>
+                </p>
+                <p>
+                    Let me explain about command that navigating file system.
+                    <ol style="list-style:none">
+                        <li>$ echo hi > hi.txt : print hi and save to hi.txt.</li>
+                        <li>$ ls : show contents of current directory.</li>
+                        <li>$ cat hi.txt : show content of hi.txt.</li>
+                        <li>$ more /etc/passwd : show content of passwd file by page by page.</li>
+                        <li>$ less /etc/passwd : show content of passwd file by page by page. Similar to more command.</li>
+                        <li>$ head -5 /etc/hosts : show first 5 lines of contents of hosts file.</li>
+                        <li>$ tail -f /var/log/syslog : show contents of syslog file. When syslog file updates, this thing prints at screen in real-time.</li>
+                        <li>$ pg /etc/profile : It is similar to more command.</li>
+                        <li>$ cd /usr/bin : Change directory to /usr/bin.</li>
+                        <li>$ pwd : Print working directory.</li>
+                    </ol>
+                </p>
+                <p>
+                    Let me explain about creating and removing file.
+                    <ol style="list-style:none">
+                        <li>$ cp hi.txt hi2.txt : make hi2.txt file and copy hi.txt's content to hi2.txt.</li>
+                        <li>$ mv hi2.txt hi3.txt : move contents of hi2.txt to hi3.txt.</li>
+                        <li>$ rm hi3.txt : remove hi3.txt file.</li>
+                        <li>$ touch a.txt : make a.txt file. If a.txt exists, it will change last edit time to now.</li>
+                        <li>$ mkdir dir1 : makie dir1 directory.</li>
+                        <li>$ mv dir1 dir2 : if dir2 exists, move dir1 directory to dir2 directory. else, change dir1's name to dir2.</li>
+                        <li>$ rmdir dir2 : remove dir2 directory. If dir2 has contents, this command cannot be executed.</li>
+                        <li>$ whereis echo : print echo's path.</li>
+                        <li>$ which echo : print echo's path.</li>
+                        <li>$ echo hello >> hi.txt : add hello to hi.txt file.</li>
+                        <li>$ cat > aa.txt : You can input multi-line text and save to aa.txt file.</li>
+                        <li>$ head -5 /etc/passwd > pass.txt : first 5 lines of passwd file is saved into pass.txt</li>
+                        <li>$ rm h*.txt : remove text file starting with h.</li>
+                        <li>$ rm dir1/*.txt : remove all text files in dir1 directory.</li>
+                        <li>$ rm -rf dir1 : remove all files in dir1 directory and remove dir1 without asking at one time. it must be careful.</li>
+                        <li>$ file hi.txt : display file type. ex) hi.txt is an ASCII text.</li>
+                    </ol>
+                </p>
+                <p>
+                    Let me explain about ls -l command's result.
+                    <br>
+                    Here's example. -rw-r--r-- 1 unix212 other 3 3/2512:00 hi.txt
+                    <br>
+                    This information contains file type:permission:link number:owner:group:last editting time:file name.<br>
+                    The first character of ls -l command's result represents file type.
+                    <ol style="list-style:none">
+                        <li>d : the entry is a directory.</li>
+                        <li>b : the entry is a block special file. ex) disk file </li>
+                        <li>c : the entry is a character special file. ex) keyboard io console file </li>
+                        <li>l : the entry is a symbolic link.</li>
+                        <li>p : the entry is a first in, first out special file(pipe)</li>
+                        <li>s : the entry is a local socket.</li>
+                        <li>- : the entry is an ordinary file.</li>
+                    </ol>
+                    Here is permission of unix system.
+                    <ol style="list-style:none">
+                        <li>The order of permission is uuugggooo (user,group,other).</li>
+                        <li>r=read, w=write, x=execute</li>
+                        <li>------------------------------------</li>
+                        <li>- file readable : cat possible</li>
+                        <li>- file writeable : can edit</li>
+                        <li>- file executable : can run this file or program</li>
+                        <li>------------------------------------</li>
+                        <li>- directory readable : ls possible</li>
+                        <li>- directory writeable : create/delete is possible</li>
+                        <li>- directory executable : cd possible</li>
+                    </ol>
+                </p>
+                <p>
+                    Link is a connection between a file name and a file. Unix system have 2 types of link. One is Hard link and The other is soft link(symbolic link).
+                    <br>
+                    $ ln hi.txt hi2.txt : create hard link(hi2.txt). Hard link creates a new file name. It increases link number. Hard link points same i-node with original file. So when original file is eliminated, you can use file by using hard link.
+                    <br>
+                    $ ln -s hi.txt hi3.txt : create soft link(hi3.txt). Soft link creates another i-node block and this i-node block points original file. And this original file points original file's i-node block and this i-node block points data block. So when original file is eliminated, you cannot use this file. But, when you made soft link by using absolute route name, you can use this file when original file is eliminated or the original file is moved to another directory.
+                </p>
+                <p>
+                    This is examples of find command.
+                    <ol style="list-style:none">
+                        <li>$ find /export/home -name 'hi.txt' : find a file hi.txt under the directory /export/home.</li>
+                        <li>$ find / -name core 2> /dev/null : find a file which name is core and hide error message.(error message goes to /dev/null.)</li>
+                        <li>$ find / -name core > out.txt 2> dev/null : find a file, save result to out.txt and hide error message.</li>
+                        <li>$ find / -name "h*.txt" -exec cat {} \; : find h~~~.txt at root directory and cat the file.</li>
+                        <li>$ find / -name "h*.txt" -ok cat {} \; : find h~~~~.txt at root directory and cat the file if answer is yes.</li>
+                    </ol>
+                </p>
+                <p>
+                    chomd command changes file's permissions.
+                    <br>
+                    $ chmod u+w,g-w,o=r-- hi.txt : add write permission to user, delete write permission from group, and set other permission as read only.
+                    <br>
+                    $ chmod +x a.sh : give execute permission to all(user,group,other). 
+                    <br>
+                    $ chmod 644 hi.txt = chmod u=rw-,g=r--,o=r-- hi.txt  4=read, 2=write, 1=executable, 0=no. 
+                </p>
+                <p>
+                    umask command defines masking some permissions when you make a new file or a new directory.
+                    <br>
+                    $ umask : see current umask value.
+                    <br>
+                    $ umask 022 : set umask as 022.
+                    <br>
+                    We can 777 XOR umask by get default directory permission. this is DEF_DIR_MASK.
+                    <br>
+                    And we can get default file permission by removing x(execute) from DEF_DIR_MASK.
+                    For example, if umask is 022, then 777 XOR 022 = 755. this is default directory permission. and X remove from 755, we can get 644. this is default file permission.
+                </p>
+                <p>
+                    Let me explain about some file system management command.
+                    <ol style="list-style:none">
+                        <li>$ df : check free disk space by block at whole mounted unix system</li>
+                        <li>$ df -k : by kilobyte.</li>
+                        <li>$ du : check disk usage of specific directory</li>
+                        <li>$ du -sk * : see summary of disk usage of each directory by kilobytes.</li>
+                        <li>$ mount : see what is currently mounted.</li>
+                        <li>$ mountall : mount all file system as defined at /etc/vfstab file.</li>
+                        <li>$ umount :  unmount device.</li>
+                        <li>$ umountall : unmount all without / and core file system.</li>
+                    </ol>
+                </p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

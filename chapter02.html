@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>20101192 Homepage</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Unix System Summary</h1>
+            <h3>20101192 Ko Kyeong Tae</h3>
+		</div>
+		<div class="content">
+			<div class="sidebar">
+				<ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chapter01.html">chapter01</a></li>
+                    <li><a href="chapter02.html">chapter02</a></li>
+                    <li><a href="chapter03.html">chapter03</a></li>
+                    <li><a href="chapter04.html">chapter04</a></li>
+                    <li><a href="chapter05.html">chapter05</a></li>
+                    <li><a href="chapter06.html">chapter06</a></li>
+                    <li><a href="chapter07.html">chapter07</a></li>
+                    <li><a href="chapter08.html">chapter08</a></li>
+                    <li><a href="chapter09.html">chapter09</a></li>
+                    <li><a href="chapter10.html">chapter10</a></li>
+                    <li><a href="chapter11.html">chapter11</a></li>
+                    <li><a href="chapter13.html">chapter13</a></li>
+                    <li><a href="chapter14.html">chapter14</a></li>
+                    <li><a href="chapter16.html">chapter16</a></li>
+                    <li><a href="chapter18.html">chapter18</a></li>
+                    <li><a href="chapter19.html">chapter19</a></li>
+                    <li><a href="dos.html">dos</a></li>
+                    </ul>
+			</div>
+			<div class="main">
+				<h2>Chapter 02</h2>
+				<p>Unix Basic Commands</p>
+				<hr>
+                <p>
+                    This is Unix system basic commands.
+                </p>
+                <p>
+                    $ ls : shows contents in directory.<br>
+                    Simply ls shows contents in current directory, 
+                    and ls /usr/bin shows contents in /usr/bin directory.
+                </p>
+                <p>
+                    $ pwd : shows current directory path. It is short for Print Working Directory.
+                </p>
+                <p>
+                    $ clear : It clears screen.
+                </p>
+                <p>
+                    $ cd : Changes directory.
+                    Just cd command changes directory to my home directory.<br>
+                    And cd / changes directory to root directory.<br>
+                    cd .. changes directory to parent directory of current directory.
+                </p>
+                <p>
+                    $ man ls : Print manual about ls command.
+                </p>
+                <p>
+                    $ who am i : shows my id, terminal number, login time, and client ip adress.
+                </p>
+                <p>
+                    $ uname -a : shows operating system version and cpu.
+                </p>
+                <p>
+                    $ date : shows current date and time.
+                </p>
+                <p>
+                    $ id : shows my uid(user id) and gid(group id).
+                </p>
+                <p>
+                    $ groups : shows my group.
+                </p>
+                <p>
+                    $ who : shows current logined user by list.<br>
+                    For example, $ who | grep unix300 will show logined unix300 user.<br>
+                    If unix300 is not logined, this command shows nothing.
+                </p>
+                <p>
+                    $ finger : shows current logined user with user name.
+                    It is very similar to who command.
+                </p>
+                <p>
+                    $ w : shows current logined user with tasks they doing.
+                    It is also similar to who command. 
+                </p>
+                <p>
+                    $ exit : logout at unix server.
+                </p>
+                <p>
+                    $ tty : shows current terminal number.
+                </p>
+                <p>
+                    $ stty -a : shows current terminal status and property like key setting.<br>
+                    For example, stty erase [backspace] command changes deleting one character function key to backspace key.
+                </p>
+                <p>
+                    $ echo hello : print hello on terimnal.
+                </p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

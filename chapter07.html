@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>20101192 Homepage</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Unix System Summary</h1>
+            <h3>20101192 Ko Kyeong Tae</h3>
+		</div>
+		<div class="content">
+			<div class="sidebar">
+				<ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chapter01.html">chapter01</a></li>
+                    <li><a href="chapter02.html">chapter02</a></li>
+                    <li><a href="chapter03.html">chapter03</a></li>
+                    <li><a href="chapter04.html">chapter04</a></li>
+                    <li><a href="chapter05.html">chapter05</a></li>
+                    <li><a href="chapter06.html">chapter06</a></li>
+                    <li><a href="chapter07.html">chapter07</a></li>
+                    <li><a href="chapter08.html">chapter08</a></li>
+                    <li><a href="chapter09.html">chapter09</a></li>
+                    <li><a href="chapter10.html">chapter10</a></li>
+                    <li><a href="chapter11.html">chapter11</a></li>
+                    <li><a href="chapter13.html">chapter13</a></li>
+                    <li><a href="chapter14.html">chapter14</a></li>
+                    <li><a href="chapter16.html">chapter16</a></li>
+                    <li><a href="chapter18.html">chapter18</a></li>
+                    <li><a href="chapter19.html">chapter19</a></li>
+                    <li><a href="dos.html">dos</a></li>
+                    </ul>
+			</div>
+			<div class="main">
+				<h2>Chapter 07</h2>
+				<p>VI</p>
+				<hr>
+                <img src="http://et.engr.iupui.edu/~dskim/tutorials/vi/vi-state-diagram.gif" alt="vi">
+                <p>
+                    VI is text editor that included in unix system.<br>
+                    We can execute vi by $ vi. And we can open or create file by $ vi filename.<br>
+                    Vi has two modes : command mode and insert mode.<br>
+                    Users can input command and moving,editing,saving,reading by using Command mode.<br>
+                    And users can insert characters by using Insert mode.<br>
+                    - command mode to insert mode : a, i, o<br>
+                    - insert mode to command mode : esc
+                </p>
+                <p>
+                    Moving within a file
+                    <ol style="list-style:none">
+                        <li>h,j,k,l : left,down,up,right. you can do same thing with arrow keys.</li>
+                        <li>0 or ^ : go to left most of the line.(same with home key)</li>
+                        <li>$ : go to right most of the line.(same with end key)</li>
+                        <li>[ENTER] : next line</li>
+                        <li>[ctrl+f] : one page forward (same with pgup key)</li>
+                        <li>[ctrl+b] : one page backward (same with pgdn key)</li>
+                        <li>[ctrl+u] : half page up</li>
+                        <li>[ctrl+d] : half page down</li>
+                        <li>:0 or :1 : go to first line</li>
+                        <li>:$  : go to last line</li>
+                        <li>:100 : go to the 100th line</li>
+                        <li>[ctrl+5] : moving cursor between bracket</li>
+                    </ol>
+                </p>
+                <p>
+                    Searching within a file
+                    <ol style="list-style:none">
+                        <li>/string : search string(forwards). ex) /hi= search hi within file.</li>
+                        <li> n :go to next string, N: go to previous string. (during searching)</li>
+                        <li>?string : search string(backwards). </li>   
+                    </ol>
+                </p>
+                <p>
+                    Exit and Save
+                    <ol style="list-style:none">
+                        <li>:q : quit(asks whether saving or not)</li>
+                        <li>:w : write to the file (save) </li>
+                        <li>:wq : write and quit </li>
+                        <li>:q! : exit without asking and saving </li>
+                        <li>:w! : overwrite</li>
+                        <li>:wq! : overwrite and exit</li>
+                        <li>ZZ : save and exit promptly</li>
+                        <li>x : exit </li>
+                        <li>w filename : write to file filename </li>
+                        <li>r filename : read filename file and paste at the current file.</li>
+                    </ol>
+                </p>
+                <p>
+                    Insert mode
+                    <ol style="list-style:none">
+                        <li>i : insert</li>
+                        <li>a : append</li>
+                        <li>o : insert from next line</li>
+                        <li>[esc] : go to command mode.</li>
+                    </ol>
+                </p>
+                <p>
+                    Delete
+                    <ol style="list-style:none">
+                        <li>x : delete a character</li>
+                        <li>5x : delete 5 character</li>
+                        <li>dd : delete 1 line</li>
+                        <li>3dd : delete 3 lines</li>
+                        <li>D : delete string left of the cursor in line.</li>
+                        <li>J : join current line and next line.</li>
+                        <li>i -> [ENTER] -> [ESC] : seperate line</li>
+                    </ol>
+                </p>
+                <p>
+                    Change
+                    <ol style="list-style:none">
+                        <li>r : replace one character. ex) ra : 1 character is changed to 'a'.</li>
+                        <li>3rc : replace 3 characters in 'c'.</li>
+                        <li>cwWORD [ESC] : change 1 word to WORD.  </li>
+                        <li>3cwWORD [ESC] : change 3 words to WORD. </li>
+                    </ol>
+                </p>
+                <p>
+                Undo / Redo
+                    <ol style="list-style:none">
+                        <li>u : undo</li>
+                        <li>uu : cancel undo </li>
+                        <li>. : redo</li>
+                    </ol>
+                </p>
+                <p>
+                    Copy and move
+                    <ol style="list-style:none">
+                        <li> How to copy a line==> yy -> [move cursor] -> p</li>
+                        <li> How to copy several lines==> 3yy -> [move cursor] ->p </li>
+                        <li> How to move a line==> dd -> [move cursor] -> p </li>
+                        <li> How to move several lines==> 3dd -> [move cursor] -> p</li>
+                    </ol>
+                </p>
+                <p>
+                    Running Commands
+                    <ol style="list-style:none">
+                        <li>:%s/abc/ABCD/g : change all 'abc' to 'ABCD' in whole file.</li>
+                        <li>:0,$ s/unix/UNIX/g : change all 'unix' to 'UNIX' in file start to end.</li>
+                        <li>:10,$ s/abc/ABCD/g : change all 'abc' to 'ABCD' from line 10 to the end of file.</li>
+                        <li>:100,200 s/unix/UNIX/g : change all 'unix' to 'UNIX' from line 100 to line 200.</li>
+                        <li>:100,200 w! filename : save line 100 to 200 to new file filename.</li>
+                    </ol>
+                </p>
+                <p>
+                    Miscellaneous commands
+                    <ol style="list-style:none">
+                        <li>:set nu : show line number</li>
+                        <li>:set nonu : hide line number</li>
+                        <li>:sh : go to shell temporary. return to vi by $ exit. </li>
+                        <li>:!pwd : run a command in vi. press [ENTER] to edit continuously.</li>
+                        <li>[Ctrl+l] : reset screen.</li>
+                    </ol>
+                </p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

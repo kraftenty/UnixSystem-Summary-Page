@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>20101192 Homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unix System Summary</h1>
+            <h3>20101192 Ko Kyeong Tae</h3>
+        </div>
+        <div class="content">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chapter01.html">chapter01</a></li>
+                    <li><a href="chapter02.html">chapter02</a></li>
+                    <li><a href="chapter03.html">chapter03</a></li>
+                    <li><a href="chapter04.html">chapter04</a></li>
+                    <li><a href="chapter05.html">chapter05</a></li>
+                    <li><a href="chapter06.html">chapter06</a></li>
+                    <li><a href="chapter07.html">chapter07</a></li>
+                    <li><a href="chapter08.html">chapter08</a></li>
+                    <li><a href="chapter09.html">chapter09</a></li>
+                    <li><a href="chapter10.html">chapter10</a></li>
+                    <li><a href="chapter11.html">chapter11</a></li>
+                    <li><a href="chapter13.html">chapter13</a></li>
+                    <li><a href="chapter14.html">chapter14</a></li>
+                    <li><a href="chapter16.html">chapter16</a></li>
+                    <li><a href="chapter18.html">chapter18</a></li>
+                    <li><a href="chapter19.html">chapter19</a></li>
+                    <li><a href="dos.html">dos</a></li>
+                </ul>
+            </div>
+            <div class="main">
+                <h2>Chapter 08</h2>
+                <p>Advanced Tools</p>
+                <hr>
+                <p>Regular Expression
+                <ol style="list-style:none">
+                    <li>A syntactical set or phrase that represents a pattern of text or strings.</li>
+                    <li>It enables you to represent a varying array of characters with a much smaller set of predefined
+                        characters.</li>
+                    <li>It often include metacharacters</li>
+                    <li>Metacharacters : characters that represent another set or group of characters or commands.</li>
+                </ol>
+                </p>
+                <p>Meta characters
+                <ol style="list-style:none">
+                    <li>. (dot,period) : a character</li>
+                    <li>[] (square brackets) : any one of inside in it</li>
+                    <li>* (asterisk,splat) : zero or more characters</li>
+                    <li>[^.*] (caret) : do not match any one of inside in it</li>
+                    <li>^.* (caret) : match at the beginning</li>
+                    <li>^.*[.*] : match at the beginning and match inside in it</li>
+                    <li>^ (caret) : match at the start of the line (start with)</li>
+                    <li>$ (dollar) : match at the end of line (end with) </li>
+                    <li>\ (backslash) : remove special meaning of the following characteer</li>
+                    <li>? (question mark) : matches zero or one character</li>
+                    <li>[a-z] : match all occurrences of any single letter</li>
+                    <li>[0-9] : match all occurrences of any single digit</li>
+                    <br>
+                    <li>[0-9][0-9][0-9]\.[0-9][0-9][0-9]\.[0-9][0-9][0-9] --> U.S. Telephone number</li>
+                </ol>
+                </p>
+                <p>FTP(file transfer protocol)
+                <ol style="list-style:none">
+                    <li>C:\> ftp 10.10.54.75</li>
+                    <li>id/password</li>
+                    <li> > cd public_html</li>
+                    <li> > dir (or ls)</li>
+                    <li> > asc //ascii mode:source code, text file, etc..</li>
+                    <li> > put a.html</li>
+                    <li> > get b.html</li>
+                    <li> > mput *.html</li>
+                    <li> > bi // binary mode:other files like jpg..</li>
+                    <li> > put my.jpg</li>
+                    <li> > quit</li>
+                </ol>
+                </p>
+                <p>grep
+                <ol style="list-style:none">
+                    <li>grep : print lines that has the string</li>
+                    <li>$ grep unix30 /etc/passwd : grep the 'unix30' in passwd file</li>
+                    <li>$ cat /etc/passwd | grep unix30 : grep the 'unix30' in passwd file. same with above</li>
+                    <li>$ grep -v unix30 /etc/passwd : print passwd file without 'unix30'. opposite resuit.</li>
+                    <li>$ grep -i unix30 /etc/passwd : grep the 'unix30' in passwd file case insensitive.(ignore case)
+                    </li>
+                    <li>$ grep '^root' /etc/group : grep starting with root in passwd file.</li>
+                    <li>$ grep 'adm$' /etc/group : grep end with adm in passwd file.</li>
+                </ol>
+                </p>
+                <p>find
+                <ol style="list-style:none">
+                    <li>Find files in directory structure.</li>
+                    <li>$ find / -name core : find file on root directory that name is 'core'</li>
+                    <li>$ find /export -user unix300 : find file on /export directory that's belonged to unix300</li>
+                    <li>$ find /export -size +2000k : find file on /export directory that's size is bigger than 2000
+                        kilobytes(2MB).</li>
+                    <li>$ find / -perm -744 : find file on root directory that's permission is 744.</li>
+                    <li>$ find / -name core 2>/dev/null : find file on root directory that's name is core, and delete
+                        error message into null device</li>
+                </ol>
+                </p>
+                <p>sort
+                <ol style="list-style:none">
+                    <li>$ sort /etc/group : sort the group file by alphabet ascending order.</li>
+                    <li>$ sort -t: +1 /etc/group : sort the group file by gid number order.(seperated by colon)</li>
+                    <li> -f : ignore case(capital)</li>
+                    <li> -r : reversed order(descending order)</li>
+                    <li> -t : set delimiter(field seperator)</li>
+                    <li> -o : set output file.</li>
+                    <li>$ sort /etc/group -o out.txt : sort the group file and save at out.txt</li>
+                    <li>$ sort /etc/group > out.txt : sort the group file and save at out.txt(same as above)</li>
+                </ol>
+                </p>
+                <p>Tee/script
+                <ol style="list-style:none">
+                    <li>Tee : split output(screen and file). Simply, output at screen and file simultaneously.</li>
+                    <li>$ ps -ef | tee ps.txt : print result of ps -ef at screen, and save as ps.txt</li>
+                    <li>$ echo hi | tee hi.txt : print hi and save in hi.txt</li>
+                    <li>$ telnet 10.10.54.75 | tee telnet.txt : telnet to 10.10.54.75 and all screen output at telnet is
+                        saved in telnet.txt</li>
+                    <br>
+                    <li>script : record interactive login session.</li>
+                    <li>$ script [-a filename] : after run this command, all screen output is saved in 'typescript' file
+                        until exit command executes.</li>
+                </ol>
+                </p>
+                <p>Unix utilities
+                <ol style="list-style:none">
+                    <li>wc : word count</li>
+                    <li>cut : extract character or words</li>
+                    <li>paste : file merge</li>
+                    <li>tr : translate character</li>
+                    <li>split : file divide</li>
+                    <li>uniq : file compare</li>
+                    <li>cmp : file compare </li>
+                    <li>comm : file compare</li>
+                    <li>diff : file compare</li>
+                </ol>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

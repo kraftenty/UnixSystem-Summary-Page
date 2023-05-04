@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>20101192 Homepage</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Unix System Summary</h1>
+            <h3>20101192 Ko Kyeong Tae</h3>
+		</div>
+		<div class="content">
+			<div class="sidebar">
+				<ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chapter01.html">chapter01</a></li>
+                    <li><a href="chapter02.html">chapter02</a></li>
+                    <li><a href="chapter03.html">chapter03</a></li>
+                    <li><a href="chapter04.html">chapter04</a></li>
+                    <li><a href="chapter05.html">chapter05</a></li>
+                    <li><a href="chapter06.html">chapter06</a></li>
+                    <li><a href="chapter07.html">chapter07</a></li>
+                    <li><a href="chapter08.html">chapter08</a></li>
+                    <li><a href="chapter09.html">chapter09</a></li>
+                    <li><a href="chapter10.html">chapter10</a></li>
+                    <li><a href="chapter11.html">chapter11</a></li>
+                    <li><a href="chapter13.html">chapter13</a></li>
+                    <li><a href="chapter14.html">chapter14</a></li>
+                    <li><a href="chapter16.html">chapter16</a></li>
+                    <li><a href="chapter18.html">chapter18</a></li>
+                    <li><a href="chapter19.html">chapter19</a></li>
+                    <li><a href="dos.html">dos</a></li>
+                    </ul>
+			</div>
+			<div class="main">
+				<h2>Chapter 03</h2>
+				<p>Users and Groups</p>
+				<hr>
+                <p>
+                    Unix system has 3 primary types of accounts: root accounts, system accounts, and user accounts.
+                    <ul>
+                        <li>
+                            1. Root Accounts, also known as Super user, have complete and unfettered control of the system.<br>
+                            The root account has no restrictions and can do anything on the system.
+                        </li>
+                        <li>
+                            2. System Accounts are needed for the operation of system-specific components.<br>
+                            Examples of system accounts include mail, bin, adm, daemon, noaccess, and nobody accounts.
+                        </li>
+                        <li>
+                            3. User Accounts are normal accounts used by ordinary users.<br>
+                             User accounts have limited access to the system.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    There are 3 important files which contain user information in a Unix system: /etc/passwd, /etc/group, and /etc/shadow.
+                    <ul>
+                        <li>
+                            1. The /etc/passwd file identifies the authorized accounts for the system.<br>
+                            It contains user information like login ID, UID (user ID), GID (group ID of primary group), comments, home directory,<br>
+                            and login shell of each user.
+                        </li>
+                        <li>
+                            2. The /etc/group file contains the secondary group of each user.<br>
+                            It contains group name, GID, and members.
+                        </li>
+                        <li>
+                            3. The /etc/shadow file contains encrypted passwords of each user.<br>
+                            It cannot be read by humans because it is encrypted.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    This is some command about this chapter:
+                </p>
+                <p>
+                    $ su: switch user (substitute user). Users can change the current user to another user by using this command. For example, $ su unix345 can change the user from the current user to the unix345 user. However, this command cannot change the working environment. 
+                </p>
+                <p>
+                    $ su - unix345 can change the user from the current user to the unix345 user, and even the working directory. It changes completely. You can check this with $ pwd command.
+                </p>
+                <p>
+                    $ su with no argument can switch to the root user. 
+                </p>
+                <p>
+                    And you can return back to the original user by typing $ exit.
+                </p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
