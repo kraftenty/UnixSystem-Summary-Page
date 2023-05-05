@@ -7,7 +7,7 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<h1>Unix System Summary</h1>
+			<h1><a href="index.html">Unix System Summary</a></h1>
             <h3>20101192 Ko Kyeong Tae</h3>
 		</div>
 		<div class="content">
@@ -37,7 +37,197 @@
 				<h2>Chapter 10</h2>
 				<p>Job Control & Process Management</p>
 				<hr>
-                
+                <p>
+                    <h3>Process</h3>
+                    An instance of running program
+                    <ul>
+                        <li>
+                            PID: process identifier(1-32768)
+                        </li>
+                        <li>
+                            PPID: parent PID
+                        </li>
+                        <li>
+                            pid 0 : schedule demon
+                        </li>
+                        <li>
+                            pid 1 : init process
+                        </li>
+                        <li>
+                            $ ps [-l] : see my own process. -l option is view details
+                        </li>
+                        <li>
+                            $ ps -ef : see all process on the system
+                        </li>
+                        <li>
+                            $ echo $$ : see current shell PID.<br>
+                            variable '$' stores current shell PID.<br>
+                            Shell is also process, so it has PID.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Shell Scripts</h3>
+                    Script that interpreted by shell.
+                    <ul>
+                        <li>
+                            # : comments.
+                        </li>
+                        <li>
+                            #! : sh-bang.<br>
+                            Tell the kernel to run the program listed aftef the #!.<br>
+                            example:<br>
+                            #!/bin/bash<br>
+                            echo hi
+                        </li>
+                        <li>
+                            shell script example: my.sh<br>
+                            #!/bin/cat<br>
+                            hello world<br>
+                            ^d
+                        </li>
+                        <li>
+                            $ chmod u+x my.sh<br>
+                            give execute permission to user to execute my.sh.
+                        </li>
+                        <li>
+                            $ ./my.sh<br>
+                            if you add current directory to path variable by using PATH=$PATH:. , <br>
+                            you can use direct command $ my.sh.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Stopping process</h3>
+                    <ul>
+                        <li>
+                            Ctrl+C (^c) : stop current process
+                        </li>
+                        <li>
+                            kill commands sends signal to process.<br>
+                            kill : kill by PID.<br>
+                            pkill : kill by process' name.
+                        </li>
+                        <li>
+                            $ kill -l : list signal names<br>
+                            HUP INT QUIT ILL TRAP ABRT EMT FPE KILL BUS SEGV<br>
+                            SYS PIPE ALRM TERM URG STOP TSTP CONT CHLD TTIN<br>
+                            TTOU IO XCPU XFSZ VTALRM PROF WINCH INFO USR1 USR2
+                        </li>
+                        <li>
+                            $ kill -9 pid<br>
+                            (= $ kill -KILL pid)
+                        </li>
+                        <li>
+                            $ pkill program-name<br>
+                            ex) $ pkill sleep
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/proc file system</h3>
+                    <ul>
+                        <li>
+                            Contains a directory entry for active process named after PID.
+                        </li>
+                        <li>
+                            $ ls -l /proc/$$
+                        </li>
+                        <li>
+                            $ ls -l /proc/1
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <img src="https://deividsdocs.files.wordpress.com/2019/08/puis_0503.gif" alt="setuid" width="50%">
+                    <h3>SETUID</h3>
+                    <ul>
+                        <li>
+                            When a regular user runs a program that are set a SETUID bit,<br>
+                            the effective UID is changed to the UID of the program owner.
+                        </li>
+                        <li>
+                            /usr/bin/passwd
+                        </li>
+                        <li>
+                            /usr/bin/crontab
+                        </li>
+                        <li>
+                            $ find / -perm -4000 : find file that are set a SETUID bit.
+                        </li>
+                        <li>
+                            $ chmod u+s myprog : set SETUID in myprog file.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>SETGID</h3>
+                    <ul>
+                        <li>
+                            When a regular user runs a program that are set a SETUID bit,<br>
+                            the effective GID is changed to the GID of the program owner.
+                        </li>
+                        <li>
+                            /usr/bin/mail
+                        </li>
+                        <li>
+                            $ find / -perm -2000 : find file that are set a SETGID bit.
+                        </li>
+                        <li>
+                            $ chmod g+s myprog : set SETGID in myprog file.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Job Control</h3>
+                    <ul>
+                        <li>
+                            Two type of process:<br>
+                            - foreground : seize the terminal<br>
+                            - background : release the terminal
+                        </li>
+                        <li>
+                            & (ampersand)<br>
+                            - start as a background<br>
+                            - $ sleep 60 &  : sleep 60 seconds that runs at background
+                        </li>
+                        <li>
+                            $ jobs : see current jobs
+                        </li>
+                        <li>
+                            $ ps : when you start sleep process, you can also see your sleep process in ps command.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Job Commands</h3>
+                    <ul>
+                        <li>
+                            $ jobs : list jobs
+                        </li>
+                        <li>
+                            $ fg [%n] : change to foreground
+                        </li>
+                        <li>
+                            $ bg [%n] : change to background
+                        </li>
+                        <li>
+                            $ kill $n : kill process by PID(%d)
+                        </li>
+                        <li>
+                            $ kill -18 %n : stop process.
+                        </li>
+                        <li>
+                            $ kill -19 %n : resume process
+                        </li>
+                        <li>
+                            $ kill -9 %n : kill process.
+                        </li>
+                        <li>
+                            ^z : temporarily stop process.
+                        </li>
+                    </ul>
+                </p>
 			</div>
 		</div>
 	</div>
