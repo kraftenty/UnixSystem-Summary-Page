@@ -171,13 +171,14 @@
                             scope () {<br>
                                 local lclVariable=1<br>
                                 gblVariable=2<br>
-                                echo “lclVariable in function = $lclVariable” echo “gblVariable in function = $gblVariable”<br>
+                                echo “lclVariable in function = $lclVariable“<br>
+                                echo “gblVariable in function = $gblVariable“<br>
                             }<br>
                             another_scope_function() {<br>
-                                echo “This is another_scope_function...” <br>
+                                echo “This is another_scope_function...“ <br>
                             }<br>
                             yet_another_function() {<br>
-                                echo “This is yet_another_function...” <br>
+                                echo “This is yet_another_function...“ <br>
                             }<br>
                         </li>
                         <li>
@@ -214,8 +215,8 @@
                         </li>
                         <li>
                             getopts uses two variables to help it keep track of everything:<br><br>
-                            ❑ OPTIND — Stores the index of the next argument to be processed.<br>
-                            ❑ OPTARG — If an argument is required, it is placed in here by getopts.<br><br>
+                            *OPTIND - Stores the index of the next argument to be processed.<br>
+                            *OPTARG - If an argument is required, it is placed in here by getopts.<br><br>
                             Most often, getopts is used in some sort of loop to go over the options and arguments supplied to the script.<br>
                             This “Try It Out” section walks you through a very brief example to see this in action.<br>
                         </li>
