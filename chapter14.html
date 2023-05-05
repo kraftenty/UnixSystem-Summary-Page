@@ -37,7 +37,242 @@
 				<h2>Chapter 14</h2>
 				<p>Advanced Shell Scripting</p>
 				<hr>
-                
+                <p>
+                    <h3>Input/Output redirection</h3>
+                    <ul>
+                        <li>
+                            3 standard files<br>
+                            - STDIN (0) : keyboard<br>
+                            - STDOUT (1) : monitor<br>
+                            - STDERR (2) : monitor
+                        </li>
+                        <li>
+                            redirection operator<br>
+                            - &lt; : redirect STDOUT to a file<br>
+                            - &lt;&lt; : appends STDOUT to a file<br>
+                            - &gt; : redirect STDIN to a file<br>
+                            - | (pipe) : sends output of a process to input of other process<br>
+                            - &gt;&gt; delimiter : associate input stream until delimiter
+                        </li>
+                        <li>
+                            $ cat &gt;&gt; AAA<br>
+                            The Cat<br>
+                            Sat on the<br>
+                            Mat.<br>
+                            AAA //end string
+                        </li>
+                        <li>
+                            $ find / -name "*.txt" > out.txt 2> err.txt<br>
+                            $ find / -name "*.txt" > out.txt 2>&1<br>
+                            $ find / -name "*.txt" 2> out.txt 1>&2
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Command Substitution</h3>
+                    <ul>
+                        <li>
+                            Substitutes results
+                        </li>
+                        <li>
+                            Back tick<br>
+                            - lines=`wc -l hi.txt`<br>
+                            - a=`expr $a + 1`
+                        </li>
+                        <li>
+                            Brace expansion<br>
+                            - lines="$(wc -l hi.txt)" //not work at sh
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Shell variable</h3>
+                    <ul>
+                        <li>
+                            $ a=5
+                        </li>
+                        <li>
+                            $ export a
+                        </li>
+                        <li>
+                            $ export b=7
+                        </li>
+                        <li>
+                            $ echo $a
+                        </li>
+                        <li>
+                            $ set
+                        </li>
+                        <li>
+                            $ env
+                        </li>
+                        <li>
+                            $ set | grep $PATH
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Shell Functions</h3>
+                    <ul>
+                        <li>
+                            Function Syntax : name() { commands }
+                        </li>
+                        <li>
+                            Code<br>
+                            repeat() {<br>
+                                echo "I don't know $1 $2"<br>
+                                return 7<br>
+                            }<br>
+                            repeat your name<br>
+                            echo $?<br>
+                            exit 0
+                        </li>
+                        <li>
+                            Result<br>
+                            I don't know your name<br>
+                            7<br>
+                            $ echo $?<br>
+                            0
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Scope</h3>
+                    <ul>
+                        <li>
+                            Two types of scope : local/global
+                        </li>
+                        <li>
+                            Code<br>
+                            scope () {<br>
+                                local lov=1   //keyword local<br>
+                                glov=2<br>
+                                echo local $lov global $glov<br>
+                            }<br>
+                            scope<br>
+                            echo local $lov global $glov<br>
+                        </li>
+                        <li>
+                            Result<br>
+                            local 1 global 2<br>
+                            local global 2<br>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Function Libraries</h3>
+                    Place whatever functions you need into a file and then include that file at the start of your script.<br>
+                    That makes whatever functions are contained in the file available for use as if you had written them in.<br>
+                    To do this, simply use the period notation.<br>
+                    Briefly, you can include function script file using dot(.)<br><br>
+                    <ul>
+                        <li>
+                            --script file include functions--<br>
+                            scope () {<br>
+                                local lclVariable=1<br>
+                                gblVariable=2<br>
+                                echo “lclVariable in function = $lclVariable” echo “gblVariable in function = $gblVariable”<br>
+                            }<br>
+                            another_scope_function() {<br>
+                                echo “This is another_scope_function...” <br>
+                            }<br>
+                            yet_another_function() {<br>
+                                echo “This is yet_another_function...” <br>
+                            }<br>
+                        </li>
+                        <li>
+                            --another script file--<br>
+                            #!/bin/bash<br>
+                            . ~/lib/scope # Define the path you need to access the function library file<br>
+                            scope another_scope_function<br>
+                            yet_another_function<br>
+                            exit 0
+                        </li>
+                        <li>
+                            --result--<br>
+                            This is another_scope_function... <br>
+                            This is yet_another_function...<br>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>getopts</h3>
+                    A built-in command line parser.
+                    <ul>
+                        <li>
+                            Getopts:<br>
+                            One other item of interest is getopts, a shell built-in (which means it is implemented by the shell inter- nally)<br>
+                            that is used to check whether command-line options passed to the script are valid. <br>
+                            You could think of it as a command-line parser. <br>
+                            The syntax for getopts is as follows:<br>
+                            getopts opstring name<br>
+                        </li>
+                        <li>
+                            In this case, opstring contains the list of characters that are to be recognized as valid options. <br>
+                            If one of the characters is followed by a colon, it means that that option should have an argument, separated by a space.<br>
+                            name is a shell variable, which is used to store the next option in the list.<br>
+                        </li>
+                        <li>
+                            getopts uses two variables to help it keep track of everything:<br><br>
+                            ❑ OPTIND — Stores the index of the next argument to be processed.<br>
+                            ❑ OPTARG — If an argument is required, it is placed in here by getopts.<br><br>
+                            Most often, getopts is used in some sort of loop to go over the options and arguments supplied to the script.<br>
+                            This “Try It Out” section walks you through a very brief example to see this in action.<br>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Signals and Traps</h3>
+                    <ul>
+                        <li>
+                            trap '' 2 // single quote, ignore ^c (SIGINT)
+                        </li>
+                        <li>
+                            while [ 1 = 1 ]<br>
+                            do<br>
+                            read a<br>
+                            if [ $a = 'a' ]<br>
+                            then<br>
+                                exit<br>
+                            else<br>
+                                echo you pressed $a<br>
+                            fi<br>
+                            done
+                        </li>
+                        <li>
+                            $ ./trap.sh<br>
+                            ^c^c^c^cqyou pressed q
+                        </li>
+                    </ul>     
+                </p>
+                <p>
+                    <h3>File Handling</h3>
+                    <ul>
+                        <li>if [ -w writeFile || -x writeFile ]</li>
+                        <li>if [ -r writeFile && -s writeFile ]</li>
+                        <li>-d : directory</li>
+                        <li>-e : file exist</li>
+                        <li>-r : readable</li>
+                        <li>-w : writeable</li>
+                        <li>-x : executable</li>
+                        <li>-s : size is greater than zero</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Array(bash)</h3>
+                    <ul>
+                        <li>a[1]=2</li>
+                        <li>a2=(1 3 5 7 9 11)</li>
+                        <li>a3=([0]=1 [7]=2)</li>
+                        <li>b=`expr $(a[3]) + ${a[5]}`</li>
+                        <li>ar=${a2[@]} // ar=(1 3 5 7 9 11)</li>
+                        <li>alnth=${#a2[@]} // alnth=4</li>
+                        <li>${ar[@]:3} : (7 9 11)</li>
+                        <li>${ar[@]:3:2} : (7 9)</li>
+                        <li>${!ar[@]} : ( 0 1 2 3 4 5)</li>
+                        <li>Unset ar[@]; unset a[2]</li>
+                      </ul>
+                </p>
 			</div>
 		</div>
 	</div>

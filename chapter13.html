@@ -37,7 +37,121 @@
 				<h2>Chapter 13</h2>
 				<p>Basic Shell Scripting</p>
 				<hr>
-                
+                <p>
+                    <h3>Script Language</h3>
+                    <ul>
+                        <li>
+                            Script is a program runs on the interpreter.
+                        </li>
+                        <li>
+                            Unix Shell is an interpreter.<br>
+                            DOS shell is an interpreter, too.
+                        </li>
+                        <li>
+                            Shell reads the script and runs it directly line-by-line.<br>
+                            compare to compile language like C/C++, must be compiled before running.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Usage</h3>
+                    <ul>
+                        <li>
+                            Shell program(scripts) is used for system administration
+                        </li>
+                        <li>
+                            Automate a vast of range of jobs with a few simple scripts (Boring and repetitive jobs)
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Script file</h3>
+                    <ul>
+                        <li>
+                            #!/bin/sh<br>
+                            - Executed by /bin/sh<br>
+                            - Shebang : hash(#), bang(!)
+                        </li>
+                        <li>
+                            # : comments
+                        </li>
+                        <li>
+                            variable=value<br>
+                            - a=1<br>
+                            - a=`expr $a+1` //back quote
+                        </li>
+                        <li>
+                            $ read a : read from keyboard and save to variable a<br>
+                            3<br>
+                            $ echo $a<br>
+                            3
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Special Variables</h3>
+                    <ul>
+                        <li>
+                            ? : previous command's exit status.<br>
+                            $ echo $?<br>
+                            0 : exit normally<br>
+                            1 : exit with problem
+                        </li>
+                        <li>
+                            $ : PID of the current shell<br>
+                            $ echo $$<br>
+                            1234 (PID)
+                        </li>
+                        <li>
+                            - : Options invoked at start-up of the current shell.
+                        </li>
+                        <li>
+                            ! : PID of the last background process.
+                        </li>
+                        <li>
+                            0 : script name
+                        </li>
+                        <li>
+                            1-9 : command-line arguments 1-9.
+                        </li>
+                        <li>
+                            _ : The last argument given to the most recently invoked command before this one.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Flow Control</h3>
+                    <ul>
+                        <li>
+                            Test Command<br>
+                            - test expression<br>
+                            - [ expression ]
+                        </li>
+                        <li>
+                            Operator<br>
+                            [ a -eq b ] : a==b<br>
+                            [ a -ne b ] : a!=b<br>
+                            [ a -gt b ] : a&gt;b<br>
+                            [ a -ge b ] : a&gt;=b<br>
+                            [ a -lt b ] : a&lt;b<br>
+                            [ a -le b ] : a&lt;=b<br>
+                            [ ! a ] : !a<br>
+                            [ a -a b ] : a && b<br>
+                            [ a -o b ] : a || b
+                        </li>
+                        <li>
+                            Conditional Flow Control<br>
+                            if-then-fi<br>
+                            if-then-else-fi<br>
+                            case-in-esac
+                        </li>
+                        <li>
+                            Iterative Flow Control<br>
+                            while-do-done<br>
+                            until-do-done<br>
+                        </li>
+                    </ul>
+                </p>
 			</div>
 		</div>
 	</div>

@@ -37,7 +37,150 @@
 				<h2>Chapter 11</h2>
 				<p>Running program at specified times</p>
 				<hr>
-                
+                <p>
+                    <h3>System Clock</h3>
+                    <ul>
+                        <li>
+                            $ date : simply check current date
+                        </li>
+                        <li>
+                            $ date 201505050001.30 : set system date
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Scheduling commands</h3>
+                    Cron<br>
+                    <img src="https://ecapitaladvisors.com/wp-content/uploads/crontab-syntax.gif" alt="cron" width="50%">
+                    <ul>
+                        <li>
+                            Periodic
+                        </li>
+                        <li>
+                            crond(daemon), crontab(file)
+                        </li>
+                        <li>
+                            crontab -e (edit), -l (list), -r (remove)
+                        </li>
+                    </ul>
+                    At<br>
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200630203914/list_pending_jobs_at_command.png" alt="at" width="50%">
+                    <ul>
+                        <li>
+                            Just One time
+                        </li>
+                        <li>
+                            atd (daemon)
+                        </li>
+                        <li>
+                            at -t 202305051230 
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>crontab</h3>
+                    <ul>
+                        <li>
+                            $ EDITOR=vi : set EDITOR variable's value to vi.
+                        </li>
+                        <li>
+                            $ export EDITOR : set EDITOR's value to global.
+                        </li>
+                        <li>
+                            $ crontab -e : when you have not root permission, you can use this command to edit /etc/crontab file.
+                        </li>
+                        <li>
+                            in /etc/crontab file:<br>
+                            minute : 0-59<br>
+                            hour : 0-23<br>
+                            day of month : 1-31<br>
+                            month : 1-12<br>
+                            day of week : 0-7 (sun,mon,tue,wed,thu,fri,sat)<br>
+                            command
+                        </li>
+                        <li>
+                            example : 30 16 * * 4 /usr/sbin/poweroff<br>
+                            every thursday(4) 16:30, server will be power off.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Crontab exporession</h3>
+                    <ul>
+                        <li>
+                            Comma and no space : 0,2,5,7,9
+                        </li>
+                        <li>
+                            Through : 1-5
+                        </li>
+                        <li>
+                            Every : *
+                        </li>
+                        <li>
+                            Step : 10-16/2 = 10,12,14,16
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Managing out from cron</h3>
+                    <ul>
+                        <li>
+                            commands | mail -s "..." username (-s : subject)<br>
+                            if the output should be mailed to someone else instead,<br>
+                            You can use pipe the output to the mail command.
+                        </li>
+                        <li>
+                            command >> log.file<br>
+                            ex) 0 * * * * userid cp -r ~username/docs ~username/backups >> log.file<br>
+                            This example redirects the output of the copy command to a log file, which can be useful in some instances.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Controlling access to cron</h3>
+                    <ul>
+                        <li>
+                            $ vi /etc/cron.allow<br>
+                            username1<br>
+                            username2<br>
+                            ...
+                        </li>
+                        <li>
+                            $ vi /etc/cron.deny<br>
+                            username3<br>
+                            username4<br>
+                            ...
+                        </li>
+                    </ul>
+                    Cron gives administrators the capability to specify who may and may not use it.<br>
+                    This is done by the use of /etc/cron.allow and /etc/cron.deny files.<br>
+                    These files work the same way as other daemons’ allow and deny files.<br>
+                    To prevent a user from using cron, just put his username in cron.deny;<br>
+                    to enable a user to use cron, place his username in the cron.allow.<br>
+                    To prevent all users from using cron, add the line ALL to the cron.deny file.<br>
+                    If there is neither a cron.allow nor a cron.deny file, the use of cron is unrestricted.
+                </p>
+                <p>
+                    <h3>at</h3>
+                    <ul>
+                        <li>
+                            One time execution
+                        </li>
+                        <li>
+                            $ atq : see at command's queue
+                        </li>
+                        <li>
+                            $ atrm -a : remove all at.
+                        </li>
+                        <li>
+                            $ at 17:00<br>
+                            $ at 5pm<br>
+                            $ at noon<br>
+                            $ at 4pm + 3 days<br>
+                            $ at -f at.file
+                        </li>
+                    </ul>
+                </p>
 			</div>
 		</div>
 	</div>
