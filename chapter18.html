@@ -37,7 +37,85 @@
 				<h2>Chapter 18</h2>
 				<p>Backup Tools</p>
 				<hr>
-                
+                <p>
+                    <h3>Backup Media Types</h3>
+                    <img src="https://cdn.ttgtmedia.com/rms/onlineImages/storage_removeablemedia_mobile.jpg" alt="backupmedia" width="30%">
+                    <ul>
+                        <li>Magnetic Tapes</li>
+                        <li>CD/DVD-ROM</li>
+                        <li>Zip drives</li>
+                        <li>Hard drive / network backup</li>
+                        <li>USB</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Backup Types</h3>
+                    <img src="https://dynasis.com/wp-content/uploads/2021/12/image001-2.jpg" alt="backuptypes" width="40%">
+                    <ul>
+                        <li>
+                            Full Backup<br>
+                            - entire
+                        </li>
+                        <li>
+                            Differential Backup<br>
+                            - that has changed since last full backup
+                        </li>
+                        <li>
+                            Incremental Backup<br>
+                            - that has changed since the completion of any other type of backup
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>tar</h3>
+                    Tape archive
+                    <ul>
+                        <li>c : create(bind)</li>
+                        <li>t : shows contents of bound file's path and information</li>
+                        <li>x : extracts</li>
+                        <li>v : verbose(print procecure when binds or extracts)</li>
+                        <li>f : set filename</li>
+                        <li>$ tar cvf mydir.tar mydir : bind mydir to mydir.tar</li>
+                        <li>$ tar tvf mydir.tar : show contents of mydir.tar's path and information</li>
+                        <li>$ tar xvf mydir.tar : extract mydir.tar</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>compresss</h3>
+                    <ul>
+                        <li>
+                            $ compress mydir.tar<br>
+                            -> mydir.tar.Z
+                        </li>
+                        <li>
+                            $ uncompress mydir.tar<br>
+                            (= $ uncompress mydir.tar.Z)
+                        </li>
+                        <li>
+                            $ gzip mydir.tar<br>
+                            -> mydir.tar.gz
+                        </li>
+                        <li>
+                            $ gzip -d mydir.tar.gz<br>
+                            (= $ gunzip mydir.tar.gz)<br>
+                            (= $ gunzip mydir.tar)
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>example</h3>
+                    $ tar cvf mydir.tar mydir<br>
+                    $ compress mydir.tar<br>
+                    $ ftp 10.10.54.75<br>
+                    Login using id/passwd<br>
+                    ftp> bi<br>
+                    ftp> put mydir.tar.Z<br>
+                    ftp> quit<br>
+                    $ telnet 10.10.54.75<br>
+                    Login using id/passwd<br>
+                    $ uncompress mydir.tar.Z<br>
+                    $ tar xvf mydir.tar
+                </p>
 			</div>
 		</div>
 	</div>

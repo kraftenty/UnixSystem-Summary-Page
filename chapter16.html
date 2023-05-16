@@ -37,7 +37,235 @@
 				<h2>Chapter 16</h2>
 				<p>Unix Networking</p>
 				<hr>
-                
+                <p>
+                    <image src="https://t1.daumcdn.net/cfile/tistory/995EFF355B74179035" alt="osi7layer" width="50%"></image>
+                    <h3>TCP/IP Protocol</h3>
+                    <ul>
+                        <li>
+                            TCP : Layer 4 of Internet Protocols.<br>
+                            Transmission Control Protocol
+                        </li>
+                        <li>
+                            IP : Layer 3 of Internet Protocols.<br>
+                            Internet Protocol
+                        </li>
+                        <li>
+                            ICMP : ping, traceroute<br>
+                            The protocol that notice the problem when processing IP packet in TCP/IP.
+                        </li>
+                        <li>
+                            UDP : Layer 4 of Internet Protocols.<br>
+                            User Datagram Protocol.<br>
+                            Less reliability and Fast speed than TCP.
+                        </li>
+                        <li>
+                            ARP : arp -a<br>
+                            Address Resolution Protocol.<br>
+                            This command checks the IP addresses and ethernet addresses (MAC addresses) of hosts in the same network.
+                        </li>
+                        <li>
+                            HTTP : web protocol
+                        </li>
+                        <li>
+                            FTP : file transfer
+                        </li>
+                        <li>
+                            Telnet : remote access
+                        </li>
+                        <li>
+                            SMTP : email
+                        </li>
+                        <li>
+                            RIP : routing protocol (Routing Information Protocol)<br>
+                            It is a protocol that determines the minimum hop count (shortest distance) and routes it.
+                        </li>
+                        <li>
+                            DNS : name server (domain name - ip address)
+                        </li>
+                        <li>
+                            DHCP : Dynamic Host Configuration Protocol<br>
+                            - ip address, netmask, default router, DNS server<br>
+                            It means automatically assigning name server addresses, IP addresses, and gateway addresses to computers in a network.<br>
+                            A dynamic address allocation protocol that leases a fixed period of time to its clients.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>IP Setup</h3>
+                    <img src="https://www.nakivo.com/blog/wp-content/uploads/2019/07/VirtualBox-network-modes-%E2%80%93-how-the-NAT-mode-works.png" alt="nat" width="50%">
+                    <ul>
+                        <li>
+                            VirtualBox default network adapter setting<br>
+                            IP : 10.0.2.15 (VirtualBox Built-in ip address)<br>
+                            Gateway : 10.0.2.2<br>
+                            Netmask : 255.255.255.0
+                        </li>
+                        <li>
+                            Interface control command<br>
+                            -- Interface enable/disable<br>
+                            # ifconfig e1000g0 up : enable<br>
+                            # ifconfig e1000g0 down : disable<br>
+                            -- Interface set/remove<br>
+                            # ifconfig e1000g0 plumb : set<br>
+                            # ifconfig e1000g0 unplumb : remove<br>
+                        </li>
+                        <li>
+                            IP Setup Procedure<br>
+                            # ifconfig e1000g0 plumb (interface set)<br>
+                            # ifconfig e1000g0 10.0.2.5 netmask 255.255.255.0 broadcast 10.0.2.255 (interface initializing)<br>
+                            # ifconfig e1000g0 up (interface enable)<br>
+                            # ifconfig -a (print every interface)<br>
+                            # route add net default 10.0.2.2 (set default gateway)<br>
+                            # ping 10.10.54.75 (ping test)
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Network Configuration files</h3>
+                    <ul>
+                        <li>
+                            /etc/hostname.e1000g0 : contains hostname (ex. sol10)
+                        </li>
+                        <li>
+                            /etc/hosts : In Solaris, the /etc/hosts file serves to provide a mapping between IP addresses and hostnames.<br>
+                            This file works by associating the IP address with the network hostname used on the local system.<br>
+                            It is primarily used to resolve host names in environments where Domain Name System (DNS) is not used.<br>
+                            <img src="etchosts.png" alt="etchosts" width="50%">
+                        </li>
+                        <li>
+                            /etc/netmasks : In Solaris, the /etc/netmasks file is responsible for providing a mapping between IP addresses and subnet masks.<br>
+                            This file is used to assign IP addresses to subnets by defining the subnet mask of the IP network.
+                        </li>
+                        <li>
+                            /etc/defaultrouter : In Solaris, the /etc/defaultrouter file is responsible for setting the system's default router IP address.<br>
+                            <img src="etcdefaultrouter.png" alt="etcdefaultrouter" width="50%">
+                        </li>
+                        <li>
+                            /etc/resolv.conf : In Solaris, the /etc/resolv.conf file is responsible for defining the system's Domain Name System (DNS) configuration.<br>
+                            <img src="etcresolvconf.png" alt="etcresolvconf" width="50%">
+                        </li>
+                        <li>
+                            /etc/nsswitch.conf : In Solaris, the /etc/nsswitch.conf file is responsible for defining the system's name service switch configuration.<br>
+                            This file determines which sources (files, NIS, LDAP, etc.) to use when the system looks up host names, user information, group information, password information, etc.<br>
+                            <img src="etcnsswitchconf.png" alt="etcnsswitchconf" width="50%">
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/etc/hostname.e1000g0</h3>
+                    <ul>
+                        <li>
+                            sol10<br>
+                            - IP address should be in /etc/hosts<br>
+                            or
+                        </li>
+                        <li>
+                            10.0.2.15
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/etc/hosts</h3>
+                    <ul>
+                        <li>
+                            #<br>
+                            # Internet host table<br>
+                            #<br>
+                            127.0.0.1 localhost<br>
+                            10.0.2.5 sol300 sol300.snut.ac.kr loghost
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/etc/netmasks</h3>
+                    <ul>
+                        <li>
+                            # Both the network-number and the netmasks are specified in<br>
+                            # "decimal dot" notation, e.g:<br>
+                            #<br>
+                            # 128.32.0.0 255.255.255.0<br>
+                            #<br>
+                            10.0.2.0 255.255.255.0
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/etc/defaultrouter</h3>
+                    <ul>
+                        <li>
+                            10.0.2.2
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/etc/resolv.conf</h3>
+                    <ul>
+                        <li>
+                            domain snut.ac.kr<br>
+                            nameserver 203.246.80.1<br>
+                            nameserver 203.246.80.5
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>/etc/nsswitch.conf</h3>
+                    <ul>
+                        <li>
+                            hosts: files dns<br>
+                            -> when the system finds an ip address of hosts of domain name,<br>
+                            first finds it at /etc/hosts file, next send query request to DNS server (/etc/resolv.conf)<br>
+                            -> if ping www.seoultech.ac.kr, then the unix system see the /etc/hosts file to resolves the ip address of www.seoultech.ac.kr,<br>
+                            if not exist there, then sends query to DNS server and resolves the ip address of 203.246.83.235
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Network Commands</h3>
+                    <ul>
+                        <li>
+                            # arp -a<br>
+                            - IP address/MAC address matching cache
+                        </li>
+                        <li>
+                            # ping 10.0.2.2<br>
+                            - Check route to target exist and target is alive
+                        </li>
+                        <li>
+                            # traceroute 10.10.54.75<br>
+                            - Check route to target. Can see all router in route.
+                        </li>
+                        <li>
+                            # nslookup seoultech.ac.kr<br>
+                            - Domain name and IP address resolution
+                        </li>
+                        <li>
+                            # ftp 10.10.54.75<br>
+                            - FTP connect to 10.10.54.75
+                        </li>
+                        <li>
+                            # telnet 10.10.54.75<br>
+                            - Telnet connect to 10.10.54.75
+                        </li>
+                        <li>
+                            # telnet seoultech.ac.kr 80<br>
+                            - web page access
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>netstat</h3>
+                    <ul>
+                        <li>
+                            Show network status
+                        </li>
+                        <li>
+                            # netstat -i : status of the interface
+                        </li>
+                        <li>
+                            # netstat -r : routing table
+                        </li>
+                    </ul>
+                </p>
 			</div>
 		</div>
 	</div>
