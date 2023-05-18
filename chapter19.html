@@ -37,7 +37,85 @@
 				<h2>Chapter 19</h2>
 				<p>Installing Software from Source Code</p>
 				<hr>
-                
+                <p>
+                    <h3>Open Source Licensing</h3>
+                    <ul>
+                        <li>
+                            BSD License<br>
+                            - Source code can be modified<br>
+                            - Modification do not have to be redistributed<br>
+                            - Advertised as BSD code is used<br>
+                            - Used as proprietary or commercial software
+                        </li>
+                        <li>
+                            GNU Public License (GPL)<br>
+                            - Called as "copylight license"<br>
+                            - Any modified version of the distributed software can be released unter the same GPL terms<br>
+                            (-> termed as not "open source" but "free software")
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Software site</h3>
+                    <ul>
+                        <li>www.sunfreeware.com</li>
+                        <li>unixpackages.com</li>
+                        <li>www.freshmeat.net</li>
+                        <li>www.linuxberg.com</li>
+                        <li>www.tucows.com</li>
+                        <li>www.fsf.org</li>
+                        <li>www.ibiblio.org</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Compile C Program</h3>
+                    <img src="https://velog.velcdn.com/images/hidaehyunlee/post/1409e53f-bd8e-407a-964a-a9cead2d8d45/makefile.png" alt="c" width="50%"><br>
+                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FG3zmv%2FbtrnpnssE0U%2FqWbNo9z68cQqXuccTZS8L0%2Fimg.png" alt="make" width="30%">
+                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzWwOq%2FbtrnpnssKXm%2FJkBLYthZgAKkJGZE4ET3l1%2Fimg.png" alt="makefile" width="30%">
+                    <ul>
+                        <li>make : the program that runs commands</li>
+                        <li>makefile : the file that specifies commands</li>
+                        <li>-c : compile and make object file</li>
+                        <li>-o : set output file's name</li>
+                        <br>
+                        <li>$ gcc hello.c</li>
+                        <li>$ gcc -o hello hello.c</li>
+                        <li>$ gcc -c main.c sub1.c sub2.c</li>
+                        <li>$ gcc -o maketest main.o sub1.o sub2.o</li>
+                        <li>
+                            make<br>
+                            - makefile, Makefile<br>
+                            - make -f make.my<br>
+                            - make &lt;target&gt;
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>makefile / Makefile</h3>
+                    &lt;default target&gt; : dependency lists<br>
+                    &lt;tab&gt;command<br>
+                    &lt;target&gt; : dependency lists<br>
+                    &lt;tab&gt;command<br>
+                    &lt;target&gt; : dependency lists<br>
+                    &lt;tab&gt;command<br>
+                    ......<br>
+                    &lt;label&gt; :
+                    &lt;tab&gt;command
+                </p>
+                <p>
+                    <h3>makefile</h3>
+                    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fw9n8W%2FbtrnmPi1ENX%2FFbW0wk5YqpbVj4e25Jfuwk%2Fimg.png" alt="makef" width="100%"><br>
+                    maketest : main.o sub1.o sub2.o<br>
+                    &lt;tab&gt;gcc -o maketest main.o sub1.o sub2.o<br>
+                    main.o : main.c my.h<br>
+                    &lt;tab&gt;gcc -c main.c<br>
+                    sub1.o : sub1.c my.h<br>
+                    &lt;tab&gt;gcc -c sub1.c<br>
+                    sub2.o : sub2.c my.h<br>
+                    &lt;tab&gt;gcc -c sub2.c<br>
+                    clean:<br>
+                    &lt;tab&gt;rm -f *.o maketest
+                </p>
 			</div>
 		</div>
 	</div>

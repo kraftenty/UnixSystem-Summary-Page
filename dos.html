@@ -35,9 +35,179 @@
 			</div>
 			<div class="main">
 				<h2>DOS</h2>
-				<p>dos</p>
+				<p>disk operating system</p>
 				<hr>
-                
+                <p>
+                    <h3>DOS</h3>
+                    <ul>
+                        <li>Disk Operating System</li>
+                        <li>Interpreter between user and computer</li>
+                        <li>
+                            Starting DOS<br>
+                            - start->all programs->aux programs->command prompt<br>
+                            - start->at cmd window->cmd->Enter<br>
+                            - at file explorer->(shift+right-click at specific directory)
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>DOS commands</h3>
+                    <ul>
+                        <li>
+                            Internal commands<br>
+                            - Memory-resident<br>
+                            - ver,vol,date,time,cls,dir,md,cd,path,rd,copy con,type,copy,del,ren,prompt
+                        </li>
+                        <li>
+                            External commands<br>
+                            - Disk-resident<br>
+                            - xcopy,move,fc,doskey,mem,more,sort,find,attrib,deltree,edit,tree
+                        </li>
+                        <li>
+                            Capital or Small letters will do
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>help</h3>
+                    description of DOS commands
+                </p>
+                <p>
+                    <h3>Changing codepage</h3>
+                    - chcp 437 : change to english<br>
+                    - chcp 949 : change to korean
+                </p>
+                <p>
+                    <h3>DOS commands</h3>
+                    <ul>
+                        <li>ver : version number</li>
+                        <li>vol : volume label</li>
+                        <li>date : display/set current system date</li>
+                        <li>time : display/set current system time</li> 
+                        <li>cls : clear screen</li>
+                        <li>
+                            dir : list of directories and files<br>
+                            - switch : /R /P /W /B /L /A
+                        </li>
+                        <li>path : defines a list of directories DOS searches for external commands</li>
+                        <li>rd(rmdir) : delete the empty directory</li>
+                        <li>md(mkdir) : make a new directory</li>
+                        <li>type : see the contents of an existing file(cat like)</li>
+                        <li>del/erase : delete a file</li>
+                        <li>ren : cnahge the file name</li>
+                        <li>tree : display directory structure</li>
+                        <li>
+                            prompt : see prompt<br>
+                            - prompt=$$   -> $<br>
+                            - prompt=$p$g    -> pwd><br>
+                        </li>
+                        <li>
+                            copy con : create a new file<br>
+                            - copy con aa.txt<br>
+                            - Hi<br>
+                            - Hello<br>
+                            - ^z<br>
+                        </li>
+                        <li>move : moves file(s)</li>
+                        <li>fc : file compare</li>
+                        <li>
+                            doskey : remember command history<br>
+                            - use up/down key
+                        </li>
+                        <li>mem : display total available memory</li>
+                        <li>attrib : see attributes of a file</li>
+                        <li>edit : start dos editor</li>
+                        <li>
+                            more : see page by page<br>
+                            - more aa.txt<br>
+                            - dir | more
+                        </li>
+                        <li>
+                            sort : arrange data in an order<br>
+                            - sort aa.log<br>
+                            - sort aa.log > b.log
+                        </li>
+                        <li>
+                            find : display lines that has the string<br>
+                            - find "201503" *.log<br>
+                            - dir | find "txt"<br>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>PATH, redirection</h3>
+                    <ul>
+                        <li>PATH</li>
+                        <li>PATH=%PATH%;c\tmp</li>
+                        <li>echo %PATH%</li>
+                        <li>echo aa > aa.txt</li>
+                        <li>echo aaa >> aa.txt</li>
+                        <li>type aa.txt 2> err.txt</li>
+                        <li>type aa.txt err.txt > a3.txt</li>
+                        <li>copy aa.txt + err.txt a4.txt</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Batch files</h3>
+                    <ul>
+                        <li>file that has a collection of dos command and control command(if,for)</li>
+                        <li>extention is bat or cmd</li>
+                        <li>
+                            copy con ls.bat(or ls.cmd)<br>
+                            - dir %*<br>
+                            - ^z
+                        </li>
+                        <li>ls</li>
+                        <li>ls c:\</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Repeat loop</h3>
+                    @echo off<br>
+                    FOR /L %%i IN (1,1,3) DO (<br>
+                        FOR /L %%j IN (1 1 3) DO (<br>
+                            echo i = %%i, j = %%j<br>
+                        )<br>
+                    )
+                </p>
+                <p>
+                    <h3>subst</h3>
+                    make virtual drive from windows folder
+                    <ul>
+                        <li>subst</li>
+                        <li>subst z: c:\tmp</li>
+                        <li>subst</li>
+                        <li>cd z:</li>
+                        <li>cd</li>
+                        <li>subst /d z:</li>
+                        <li>subst</li>
+                    </ul>
+                </p>
+                <p>
+                    <h3>Unix/dos commands</h3>
+                    <img src="https://i.pinimg.com/474x/2e/46/bd/2e46bd44a8cbc59cf2e7e3c852a501c3--linux-os-dos-commands.jpg" alt="unixdos" width="50%">
+                </p>
+                <p>
+                    <h3>Network commands</h3>
+                    <ul>
+                        <li>ipconfig</li>
+                        <li>ping 117.17.198.24</li>
+                        <li>telnet 117.17.198.24</li>
+                        <li>
+                            ftp 117.17.198.24<br>
+                            - cd public_html<br>
+                            - pwd<br>
+                            - asc<br>
+                            - put my.html<br>
+                            - bi<br>
+                            - mput *.jpg<br>
+                            - dir<br>
+                            - get aa.gif<br>
+                            - !dir<br>
+                            - quit
+                        </li>
+                    </ul>
+                </p>
 			</div>
 		</div>
 	</div>
